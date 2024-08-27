@@ -1,10 +1,12 @@
 package com.example.SpringSecuritySample.user;
 
+import com.example.SpringSecuritySample.token.Token;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.util.Collection;
 import java.util.List;
@@ -26,6 +28,8 @@ public class User implements UserDetails {
   @Enumerated(EnumType.STRING)
   private Role role;
 
+  @OneToMany(mappedBy = "user")
+  private List<Token> tokens;
 
   public Integer getId() {
     return id;
